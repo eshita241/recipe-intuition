@@ -1,1 +1,4 @@
 project_id = "xikvszaazgvcflgvaczt"
+
+[functions.generate-recipes]
+verify_jwt = false
