@@ -14,7 +14,157 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      profiles: {
+        Row: {
+          created_at: string
+          dietary_preferences: string[] | null
+          id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          dietary_preferences?: string[] | null
+          id?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          dietary_preferences?: string[] | null
+          id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      recipe_ratings: {
+        Row: {
+          created_at: string
+          id: string
+          rating: number
+          recipe_id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          rating: number
+          recipe_id: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          rating?: number
+          recipe_id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "recipe_ratings_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      recipes: {
+        Row: {
+          calories: number | null
+          carbs: number | null
+          cook_time: number | null
+          created_at: string
+          cuisine: string | null
+          description: string | null
+          dietary_tags: string[] | null
+          difficulty: string | null
+          fat: number | null
+          id: string
+          image_url: string | null
+          ingredients: string[]
+          instructions: string[]
+          name: string
+          prep_time: number | null
+          protein: number | null
+          servings: number | null
+          updated_at: string
+        }
+        Insert: {
+          calories?: number | null
+          carbs?: number | null
+          cook_time?: number | null
+          created_at?: string
+          cuisine?: string | null
+          description?: string | null
+          dietary_tags?: string[] | null
+          difficulty?: string | null
+          fat?: number | null
+          id?: string
+          image_url?: string | null
+          ingredients: string[]
+          instructions: string[]
+          name: string
+          prep_time?: number | null
+          protein?: number | null
+          servings?: number | null
+          updated_at?: string
+        }
+        Update: {
+          calories?: number | null
+          carbs?: number | null
+          cook_time?: number | null
+          created_at?: string
+          cuisine?: string | null
+          description?: string | null
+          dietary_tags?: string[] | null
+          difficulty?: string | null
+          fat?: number | null
+          id?: string
+          image_url?: string | null
+          ingredients?: string[]
+          instructions?: string[]
+          name?: string
+          prep_time?: number | null
+          protein?: number | null
+          servings?: number | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      user_favorites: {
+        Row: {
+          created_at: string
+          id: string
+          recipe_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          recipe_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          recipe_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_favorites_recipe_id_fkey"
+            columns: ["recipe_id"]
+            isOneToOne: false
+            referencedRelation: "recipes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
